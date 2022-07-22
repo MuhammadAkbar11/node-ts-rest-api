@@ -1,5 +1,13 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const { PORT, PRIVATE_KEY, PUBLIC_KEY, DB_URI } = process.env;
+
 export default {
-  port: 1337,
-  dbUri: "mongodb://localhost:27017/nodets-rest-api",
+  port: PORT,
+  dbUri: DB_URI,
   saltWorkFactor: 10,
+  publicKey: PUBLIC_KEY,
+  privateKey: PRIVATE_KEY,
 };
