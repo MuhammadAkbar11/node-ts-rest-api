@@ -1,6 +1,5 @@
 import pino from "pino";
-import dayjs from "dayjs";
-import dayjsUTC from "./dayjsUTC";
+import dayjsUTC from "./dayjsUTC.utils";
 
 // const logger = pino({
 //   prettyPrint: true,

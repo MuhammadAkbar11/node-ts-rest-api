@@ -13,7 +13,7 @@ export async function createUserHandler(
 
     return res.status(201).json({
       message: "Registration successfully",
-      user: omit(user.toJSON(), "password"),
+      user: user,
     });
   } catch (error: any) {
     logger.error(error);
