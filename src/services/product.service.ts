@@ -27,7 +27,7 @@ export async function findProductService(
 
 export async function findOneProductService(
   query: mongoose.FilterQuery<ProductDocument>,
-  opts: mongoose.QueryOptions
+  opts: mongoose.QueryOptions = {}
 ) {
   try {
     return await ProductModel.findOne(query, {}, opts);
@@ -39,8 +39,10 @@ export async function findOneProductService(
 
 export async function finAndUpdateProductService(
   query: mongoose.FilterQuery<ProductDocument>,
-  update: DocumentDefinition<Omit<ProductDocument, "createdAt" | "updatedAt">>,
-  options: mongoose.QueryOptions
+  update: DocumentDefinition<
+    Omit<ProductDocument, "createdAt" | "updatedAt" | "user">
+  >,
+  options: mongoose.QueryOptions = {}
 ) {
   try {
     return await ProductModel.findOneAndUpdate(query, update, options);
@@ -49,7 +51,7 @@ export async function finAndUpdateProductService(
     throw new Error(error);
   }
 }
-export async function deleetProductService(
+export async function deleteProductService(
   query: mongoose.FilterQuery<ProductDocument>
 ) {
   try {
