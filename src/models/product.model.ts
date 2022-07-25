@@ -7,12 +7,15 @@ const setNanoId = nanoid.customAlphabet(
   10
 );
 
-export interface ProductDocument extends mongoose.Document {
+export interface IProductInput {
   user: UserDocument["_id"];
   title: string;
   description: string;
   price: number;
   image: string;
+}
+
+export interface ProductDocument extends IProductInput, mongoose.Document {
   createdAt: Date;
   updatedAt: Date;
 }

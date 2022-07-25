@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { IProductInput } from "../models/product.model";
 import {
   CreateProductInput,
   DeleteProduct,
@@ -65,7 +66,7 @@ export async function updateProductHandler(
       });
     }
 
-    const postUpdate = {
+    const postUpdate: Omit<IProductInput, "user"> = {
       title,
       description,
       image,

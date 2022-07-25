@@ -1,13 +1,9 @@
-import mongoose, { DocumentDefinition } from "mongoose";
+import mongoose from "mongoose";
 import { omit } from "lodash";
-import UserModel, { UserDocument } from "../models/user.model";
+import UserModel, { IUserInput, UserDocument } from "../models/user.model";
 import logger from "../utils/logger.utils";
 
-export async function createUserService(
-  input: DocumentDefinition<
-    Omit<UserDocument, "createdAt" | "updatedAt" | "comparePassword">
-  >
-) {
+export async function createUserService(input: IUserInput) {
   try {
     const result = await UserModel.create(input);
     return omit(result.toJSON(), "password");

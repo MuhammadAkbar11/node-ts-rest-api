@@ -1,10 +1,11 @@
-import mongoose, { DocumentDefinition } from "mongoose";
-import ProductModel, { ProductDocument } from "../models/product.model";
+import mongoose from "mongoose";
+import ProductModel, {
+  IProductInput,
+  ProductDocument,
+} from "../models/product.model";
 import logger from "../utils/logger.utils";
 
-export async function createProductService(
-  input: DocumentDefinition<Omit<ProductDocument, "createdAt" | "updatedAt">>
-) {
+export async function createProductService(input: IProductInput) {
   try {
     return await ProductModel.create(input);
   } catch (error: any) {
@@ -39,9 +40,7 @@ export async function findOneProductService(
 
 export async function finAndUpdateProductService(
   query: mongoose.FilterQuery<ProductDocument>,
-  update: DocumentDefinition<
-    Omit<ProductDocument, "createdAt" | "updatedAt" | "user">
-  >,
+  update: Omit<IProductInput, "user">,
   options: mongoose.QueryOptions = {}
 ) {
   try {

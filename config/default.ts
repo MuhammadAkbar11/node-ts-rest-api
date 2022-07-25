@@ -1,6 +1,11 @@
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+dotenv.config({
+  path: process.env.TS_NODE_DEV
+    ? path.resolve(__dirname, "../.env.dev")
+    : path.resolve(__dirname, "../.env"),
+});
 
 const { PORT, PRIVATE_KEY, PUBLIC_KEY, DB_URI } = process.env;
 
