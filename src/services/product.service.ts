@@ -5,7 +5,9 @@ import ProductModel, {
 } from "../models/product.model";
 import logger from "../utils/logger.utils";
 
-export async function createProductService(input: IProductInput) {
+export async function createProductService(
+  input: Omit<IProductInput, "productId">
+) {
   try {
     return await ProductModel.create(input);
   } catch (error: any) {
@@ -40,7 +42,7 @@ export async function findOneProductService(
 
 export async function finAndUpdateProductService(
   query: mongoose.FilterQuery<ProductDocument>,
-  update: Omit<IProductInput, "user">,
+  update: Omit<IProductInput, "user" | "productId">,
   options: mongoose.QueryOptions = {}
 ) {
   try {

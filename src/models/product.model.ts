@@ -9,6 +9,7 @@ const setNanoId = nanoid.customAlphabet(
 
 export interface IProductInput {
   user: UserDocument["_id"];
+  productId: string;
   title: string;
   description: string;
   price: number;

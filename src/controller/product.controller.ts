@@ -66,7 +66,7 @@ export async function updateProductHandler(
       });
     }
 
-    const postUpdate: Omit<IProductInput, "user"> = {
+    const postUpdate: Omit<IProductInput, "user" | "productId"> = {
       title,
       description,
       image,
